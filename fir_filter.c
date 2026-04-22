@@ -11,11 +11,6 @@ typedef struct {
 
 static FIRFilter my_filter; // Private global instance
 
-void fir_init(void) {
-    memset(my_filter.buffer, 0, sizeof(my_filter.buffer));
-    my_filter.head = 0;
-}
-
 void fir_process_block(const float *input_buf, float *output_buf, int len) {
     for (int i = 0; i < len; i++) {
         my_filter.buffer[my_filter.head] = input_buf[i];
